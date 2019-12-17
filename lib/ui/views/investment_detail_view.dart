@@ -51,14 +51,16 @@ class InvestmentDetailView extends StatelessWidget {
                     ),
                     SimulationRow(
                         title: 'Valor aplicado inicialmente',
-                        value: model.response.investmentParameter.investedAmount
-                            .toString()),
+                        value: 'R\$ ' +
+                            model.response.investmentParameter.investedAmount
+                                .toString()),
                     SimulationRow(
-                        title: 'Valor bruto inicialmente',
-                        value: model.response.grossAmount.toString()),
+                        title: 'Valor bruto do investimento',
+                        value: 'R\$ ' + model.response.grossAmount.toString()),
                     SimulationRow(
                         title: 'Valor do rendimento',
-                        value: model.response.grossAmountProfit.toString()),
+                        value: 'R\$ ' +
+                            model.response.grossAmountProfit.toString()),
                     SimulationRow(
                         title: 'IR sobre o investimento',
                         value:
