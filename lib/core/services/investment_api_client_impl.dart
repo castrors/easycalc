@@ -1,8 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:easycalc/core/model/investment_input.dart';
 import 'package:easycalc/core/model/investment_response.dart';
-import 'package:easycalc/utils.dart';
-import 'package:intl/intl.dart';
+import 'package:easycalc/extensions.dart';
 
 abstract class InvestmentApiClient {
   Future<InvestmentResponse> performSimulation(InvestmentInput input);
@@ -16,7 +15,7 @@ class InvestmentApiClientImpl implements InvestmentApiClient {
             '&index=CDI' +
             '&rate=${input.cdi}' +
             '&isTaxFree=false' +
-            '&maturityDate=${Utils.formatDate(input.date, 'yyyy-MM-dd')}');
+            '&maturityDate=${input.date.formatDate('yyyy-MM-dd')}');
     return InvestmentResponse.fromJson(response.data);
   }
 

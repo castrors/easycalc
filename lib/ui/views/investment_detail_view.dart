@@ -1,8 +1,8 @@
 import 'package:easycalc/core/model/investment_input.dart';
 import 'package:easycalc/core/viewmodels/investment_model.dart';
 import 'package:easycalc/core/viewmodels/view_state.dart';
+import 'package:easycalc/extensions.dart';
 import 'package:easycalc/ui/views/base_view.dart';
-import 'package:easycalc/utils.dart';
 import 'package:flutter/material.dart';
 
 class InvestmentDetailView extends StatelessWidget {
@@ -32,7 +32,7 @@ class InvestmentDetailView extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                     Text(
-                      'R\$ ' + model.response.grossAmount.toString(),
+                      model.response.grossAmount.toMonetary(),
                       textAlign: TextAlign.center,
                     ),
                     Row(
@@ -42,8 +42,7 @@ class InvestmentDetailView extends StatelessWidget {
                           'Rendimento total de ',
                           textAlign: TextAlign.center,
                         ),
-                        Text('R\$ ' +
-                            model.response.grossAmountProfit.toString())
+                        Text(model.response.grossAmountProfit.toMonetary())
                       ],
                     ),
                     SizedBox(
@@ -51,31 +50,28 @@ class InvestmentDetailView extends StatelessWidget {
                     ),
                     SimulationRow(
                         title: 'Valor aplicado inicialmente',
-                        value: 'R\$ ' +
-                            model.response.investmentParameter.investedAmount
-                                .toString()),
+                        value: model.response.investmentParameter.investedAmount
+                            .toMonetary()),
                     SimulationRow(
                         title: 'Valor bruto do investimento',
-                        value: 'R\$ ' + model.response.grossAmount.toString()),
+                        value: model.response.grossAmount.toMonetary()),
                     SimulationRow(
                         title: 'Valor do rendimento',
-                        value: 'R\$ ' +
-                            model.response.grossAmountProfit.toString()),
+                        value: model.response.grossAmountProfit.toMonetary()),
                     SimulationRow(
                         title: 'IR sobre o investimento',
                         value:
                             'R\$ ${model.response.taxesAmount} (${model.response.taxesRate})'),
                     SimulationRow(
                         title: 'Valor líquido do investimento',
-                        value: 'R\$ ' + model.response.netAmount.toString()),
+                        value: model.response.netAmount.toMonetary()),
                     SizedBox(
                       height: 32.0,
                     ),
                     SimulationRow(
                         title: 'Data de resgate',
-                        value: Utils.formatDate(
-                            model.response.investmentParameter.maturityDate,
-                            'dd/MM/yyyy')),
+                        value: model.response.investmentParameter.maturityDate
+                            .formatDate('dd/MM/yyyy')),
                     SimulationRow(
                         title: 'Dias corridos',
                         value: model
@@ -83,17 +79,17 @@ class InvestmentDetailView extends StatelessWidget {
                             .toString()),
                     SimulationRow(
                         title: 'Rendimento mensal',
-                        value: '${model.response.monthlyGrossRateProfit}%'),
+                        value: model.response.monthlyGrossRateProfit.toPercent()),
                     SimulationRow(
                         title: 'Percentual do CDI do investimento',
-                        value: '${model.response.investmentParameter.rate}%'),
+                        value: model.response.investmentParameter.rate.toPercent()),
                     SimulationRow(
                         title: 'Rentabilidade anual',
                         value:
-                            '${model.response.investmentParameter.yearlyInterestRate}%'),
+                            model.response.investmentParameter.yearlyInterestRate.toPercent()),
                     SimulationRow(
                         title: 'Rentabilidade no período',
-                        value: '${model.response.rateProfit}%'),
+                        value: model.response.rateProfit.toPercent()),
                   ],
                 ),
               ),
