@@ -15,6 +15,7 @@ dependencies:
   datetime_picker_formfield: 0.4.3
   provider: 3.2.0
   get_it: 3.0.3
+  google_fonts: 0.2.0
 
 dev_dependencies:
   flutter_test:
