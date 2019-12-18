@@ -1,6 +1,10 @@
 import 'package:easycalc/core/model/investment_parameter.dart';
+import 'package:easycalc/core/services/investment_repository.dart';
+
+enum ResponseStatus { SUCCESS, TIMEOUT, ERROR }
 
 class InvestmentResponse {
+  ResponseStatus responseStatus;
   InvestmentParameter investmentParameter;
   double grossAmount;
   double taxesAmount;
@@ -15,7 +19,8 @@ class InvestmentResponse {
   double annualNetRateProfit;
 
   InvestmentResponse(
-      {this.investmentParameter,
+      {this.responseStatus,
+      this.investmentParameter,
       this.grossAmount,
       this.taxesAmount,
       this.netAmount,
@@ -29,6 +34,7 @@ class InvestmentResponse {
       this.annualNetRateProfit});
 
   InvestmentResponse.fromJson(Map<String, dynamic> json) {
+    responseStatus = ResponseStatus.SUCCESS;
     investmentParameter = json['investmentParameter'] != null
         ? new InvestmentParameter.fromJson(json['investmentParameter'])
         : null;
@@ -62,5 +68,30 @@ class InvestmentResponse {
     data['rateProfit'] = this.rateProfit;
     data['annualNetRateProfit'] = this.annualNetRateProfit;
     return data;
+  }
+
+  static InvestmentResponse empty(ResponseStatus status) {
+    return InvestmentResponse(
+      responseStatus: status,
+      investmentParameter: InvestmentParameter(
+          investedAmount: 0.0,
+          isTaxFree: false,
+          maturityBusinessDays: 0,
+          maturityDate: DateTime.now(),
+          maturityTotalDays: 0,
+          rate: 0.0,
+          yearlyInterestRate: 0.0),
+      annualGrossRateProfit: 0.0,
+      annualNetRateProfit: 0.0,
+      dailyGrossRateProfit: 0.0,
+      grossAmount: 0.0,
+      grossAmountProfit: 0.0,
+      monthlyGrossRateProfit: 0.0,
+      netAmount: 0.0,
+      netAmountProfit: 0.0,
+      rateProfit: 0.0,
+      taxesAmount: 0.0,
+      taxesRate: 0.0,
+    );
   }
 }
