@@ -1,7 +1,7 @@
+import 'package:easycalc/core/model/investment_input.dart';
 import 'package:easycalc/core/model/investment_parameter.dart';
-import 'package:easycalc/core/services/investment_repository.dart';
 
-enum ResponseStatus { SUCCESS, TIMEOUT, ERROR }
+enum ResponseStatus { SUCCESS, BADREQUEST, ERROR }
 
 class InvestmentResponse {
   ResponseStatus responseStatus;
@@ -70,16 +70,16 @@ class InvestmentResponse {
     return data;
   }
 
-  static InvestmentResponse empty(ResponseStatus status) {
+  static InvestmentResponse empty(InvestmentInput input, ResponseStatus status) {
     return InvestmentResponse(
       responseStatus: status,
       investmentParameter: InvestmentParameter(
-          investedAmount: 0.0,
+          investedAmount: input.amount,
           isTaxFree: false,
           maturityBusinessDays: 0,
-          maturityDate: DateTime.now(),
+          maturityDate: input.date,
           maturityTotalDays: 0,
-          rate: 0.0,
+          rate: input.cdi.toDouble(),
           yearlyInterestRate: 0.0),
       annualGrossRateProfit: 0.0,
       annualNetRateProfit: 0.0,

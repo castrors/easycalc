@@ -20,3 +20,13 @@ final titleStyle = GoogleFonts.roboto(
       height: 1.5,
       color: Colors.grey.shade800),
 );
+
+final subtitleStyle = GoogleFonts.roboto(
+  textStyle: TextStyle(color: Colors.grey.shade500),
+);
+
+final subtitleGreenStyle = GoogleFonts.roboto(
+  textStyle: TextStyle(
+    color: Color(customGreen),
+  ),
+);
