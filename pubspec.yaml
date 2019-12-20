@@ -12,7 +12,7 @@ dependencies:
 
   cupertino_icons: ^0.1.2
   dio: 3.0.7
-  datetime_picker_formfield: 0.4.3
+  datetime_picker_formfield: 1.0.0-pre.5
   provider: 3.2.0
   get_it: 3.0.3
   google_fonts: 0.2.0
@@ -20,7 +20,9 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  test: 1.9.4
+  flutter_driver:
+    sdk: flutter
+  test: any
   mockito: 4.1.1
 
 flutter:

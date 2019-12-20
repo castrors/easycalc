@@ -29,6 +29,7 @@ class _InvestmentFormViewState extends State<InvestmentFormView> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               TextFormField(
+                key: Key('amount'),
                 decoration: InputDecoration(
                     labelText: 'Quanto você gostaria de aplicar?',
                     hintText: 'R\$'),
@@ -51,6 +52,7 @@ class _InvestmentFormViewState extends State<InvestmentFormView> {
                 height: 16,
               ),
               DateTimeField(
+                key: Key('date'),
                 format: DateFormat('dd/MM/yyyy'),
                 decoration: InputDecoration(
                     labelText: 'Qual a data de vencimento do investimento?',
@@ -82,6 +84,7 @@ class _InvestmentFormViewState extends State<InvestmentFormView> {
                 height: 16,
               ),
               TextFormField(
+                key: Key('cdi'),
                 decoration: InputDecoration(
                     labelText: 'Qual o percentual do CDI do investimento?',
                     hintText: '100%'),
@@ -108,6 +111,7 @@ class _InvestmentFormViewState extends State<InvestmentFormView> {
                 minWidth: 300,
                 height: 48,
                 child: RaisedButton(
+                    key: Key('submit'),
                     color: Color(customGreen),
                     child: Text(
                       'Simular',
