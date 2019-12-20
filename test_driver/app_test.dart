@@ -25,7 +25,7 @@ void main() {
       expect(health.status, HealthStatus.ok);
     });
 
-    test('check flutter driver health', () async {
+    test('fill the form and perform request', () async {
       await driver.tap(amountFinder);
       await driver.enterText('1000');
       await driver.tap(dateFinder);
