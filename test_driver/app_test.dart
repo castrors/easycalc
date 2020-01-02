@@ -36,6 +36,21 @@ void main() {
       await driver.waitFor(submitFinder);
       await driver.tap(submitFinder);
       await driver.waitFor(find.text('Resultado da simulação'));
+      
     });
+
+    // test('fill the form with error and perform request should show amount error', () async {
+    //   await driver.tap(amountFinder);
+    //   await driver.enterText('-1000');
+    //   await driver.tap(dateFinder);
+    //   await driver.tap(find.text('OK'));
+    //   await driver.tap(cdiFinder);
+    //   await driver.enterText('100');
+
+    //   await driver.waitFor(submitFinder);
+    //   await driver.tap(submitFinder);
+    //   await driver.waitFor(find.text('Por favor, digite o valor do investimento'));
+      
+    // });
   });
 }
