@@ -3,11 +3,12 @@ import 'dart:io';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:easycalc/core/model/investment_input.dart';
-import 'package:easycalc/core/services/investment_api_protocol.dart';
+import 'package:easycalc/core/model/investment_response.dart';
+import 'package:easycalc/core/services/investment_protocol.dart';
 import 'package:easycalc/extensions.dart';
 
-class InvestmentApiClient implements InvestmentApiProtocol {
-  Future<Response> performSimulation(InvestmentInput input) async {
+class InvestmentApiClient implements InvestmentProtocol {
+  Future<InvestmentResponse> performSimulation(InvestmentInput input) async {
     try {
       var dio = Dio();
       addProxyForTesting(dio);
@@ -19,9 +20,13 @@ class InvestmentApiClient implements InvestmentApiProtocol {
               '&isTaxFree=false' +
               '&maturityDate=${input.date.formatDate('yyyy-MM-dd')}');
 
-      return response;
-    } on DioError catch (error) {
-      return error.response;
+      if (response.statusCode >= 200 && response.statusCode <= 299) {
+        return InvestmentResponse.fromJson(response.data);
+      } else {
+        return InvestmentResponse.empty(input, ResponseStatus.BADREQUEST);
+      }
+    } on DioError catch (_) {
+      return InvestmentResponse.empty(input, ResponseStatus.ERROR);
     }
   }
 

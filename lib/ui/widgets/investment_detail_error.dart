@@ -1,5 +1,4 @@
 import 'package:easycalc/core/model/investment_input.dart';
-import 'package:easycalc/core/viewmodels/investment_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:easycalc/constants.dart';

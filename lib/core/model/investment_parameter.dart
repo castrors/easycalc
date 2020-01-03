@@ -1,11 +1,13 @@
-class InvestmentParameter {
-  double investedAmount;
-  double yearlyInterestRate;
-  int maturityTotalDays;
-  int maturityBusinessDays;
-  DateTime maturityDate;
-  double rate;
-  bool isTaxFree;
+import 'package:equatable/equatable.dart';
+
+class InvestmentParameter extends Equatable {
+  final double investedAmount;
+  final double yearlyInterestRate;
+  final int maturityTotalDays;
+  final int maturityBusinessDays;
+  final DateTime maturityDate;
+  final double rate;
+  final bool isTaxFree;
 
   InvestmentParameter(
       {this.investedAmount,
@@ -16,14 +18,16 @@ class InvestmentParameter {
       this.rate,
       this.isTaxFree});
 
-  InvestmentParameter.fromJson(Map<String, dynamic> json) {
-    investedAmount = json['investedAmount'];
-    yearlyInterestRate = json['yearlyInterestRate'];
-    maturityTotalDays = json['maturityTotalDays'];
-    maturityBusinessDays = json['maturityBusinessDays'];
-    maturityDate = DateTime.parse(json['maturityDate']);
-    rate = json['rate'];
-    isTaxFree = json['isTaxFree'];
+  static InvestmentParameter fromJson(Map<String, dynamic> json) {
+    return InvestmentParameter(
+      investedAmount: json['investedAmount'],
+      yearlyInterestRate: json['yearlyInterestRate'],
+      maturityTotalDays: json['maturityTotalDays'],
+      maturityBusinessDays: json['maturityBusinessDays'],
+      maturityDate: DateTime.parse(json['maturityDate']),
+      rate: json['rate'],
+      isTaxFree: json['isTaxFree'],
+    );
   }
 
   Map<String, dynamic> toJson() {
@@ -37,4 +41,15 @@ class InvestmentParameter {
     data['isTaxFree'] = this.isTaxFree;
     return data;
   }
+
+  @override
+  List<Object> get props => [
+        investedAmount,
+        yearlyInterestRate,
+        maturityTotalDays,
+        maturityBusinessDays,
+        maturityDate,
+        rate,
+        isTaxFree
+      ];
 }
