@@ -5,10 +5,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:easycalc/constants.dart';
 
 class InvestmentDetailError extends StatelessWidget {
-  final InvestmentModel model;
+  final InvestmentInput input;
   final IconData icon;
   final String errorMessage;
-  InvestmentDetailError(this.model, this.icon, this.errorMessage);
+  InvestmentDetailError(this.input, this.icon, this.errorMessage);
 
   @override
   Widget build(BuildContext context) {
@@ -64,12 +64,8 @@ class InvestmentDetailError extends StatelessWidget {
                   borderRadius: BorderRadius.circular(24.0),
                 ),
                 onPressed: () {
-                  var param = model.response.investmentParameter;
-                  var input = InvestmentInput(
-                      amount: param.investedAmount,
-                      date: param.maturityDate,
-                      cdi: param.rate.toInt());
-                  model.performSimulation(input);
+                 
+                  // model.performSimulation(input);
                 },
               ),
             ),
