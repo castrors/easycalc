@@ -1,4 +1,6 @@
 import 'package:easycalc/core/model/investment_input.dart';
+import 'package:easycalc/core/store/investment_store.dart';
+import 'package:easycalc/locator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:easycalc/constants.dart';
@@ -64,7 +66,7 @@ class InvestmentDetailError extends StatelessWidget {
                 ),
                 onPressed: () {
                  
-                  // model.performSimulation(input);
+                  locator<InvestmentStore>().performSimulation(input);
                 },
               ),
             ),

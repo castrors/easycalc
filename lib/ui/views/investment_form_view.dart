@@ -1,6 +1,8 @@
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:easycalc/constants.dart';
 import 'package:easycalc/core/model/investment_input.dart';
+import 'package:easycalc/core/store/investment_store.dart';
+import 'package:easycalc/locator.dart';
 import 'package:easycalc/ui/views/investment_detail_view.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -133,10 +135,10 @@ class _InvestmentFormViewState extends State<InvestmentFormView> {
 
   void _submit() {
     if (_formKey.currentState.validate()) {
+      locator<InvestmentStore>().performSimulation(investmentInput);
       Navigator.push(
         context,
-        MaterialPageRoute(
-            builder: (context) => InvestmentDetailView(input: investmentInput)),
+        MaterialPageRoute(builder: (context) => InvestmentDetailView()),
       );
     }
   }

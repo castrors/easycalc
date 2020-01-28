@@ -11,7 +11,7 @@ class InvestmentApiClient implements InvestmentProtocol {
   Future<InvestmentResponse> performSimulation(InvestmentInput input) async {
     try {
       var dio = Dio();
-      addProxyForTesting(dio);
+      // addProxyForTesting(dio);
       Response response = await dio.get(
           'http://api-simulator-calc.easynvest.com.br/calculator/simulate' +
               '?investedAmount=${input.amount}' +
