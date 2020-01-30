@@ -13,7 +13,7 @@ class InvestmentApiClient implements InvestmentProtocol {
       var dio = Dio();
       // addProxyForTesting(dio);
       Response response = await dio.get(
-          'http://api-simulator-calc.easynvest.com.br/calculator/simulate' +
+          'https://api-simulator-calc.easynvest.com.br/calculator/simulate' +
               '?investedAmount=${input.amount}' +
               '&index=CDI' +
               '&rate=${input.cdi}' +
